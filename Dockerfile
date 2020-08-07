@@ -2,7 +2,7 @@ FROM debian
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends curl ca-certificates \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
  && curl -Ls https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz -o cloudflared.tgz  \
  && tar xzvf cloudflared.tgz \
  && rm cloudflared.tgz \
