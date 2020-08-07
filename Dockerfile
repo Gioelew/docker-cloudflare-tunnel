@@ -11,10 +11,14 @@ RUN apt-get update \
 # https://git.io/JfLKZ
 RUN ldd cloudflared | tr -s '[:blank:]' '\n' | grep '^/' | \
     xargs -I % sh -c 'mkdir -p $(dirname deps%); cp % deps%;'
+    
+RUN ldd /bin/sh | tr -s '[:blank:]' '\n' | grep '^/' | \
+    xargs -I % sh -c 'mkdir -p $(dirname deps%); cp % deps%;'
 
 FROM scratch
 WORKDIR /
 COPY --from=0 /deps /
+COPY --from=0 /bin/sh /bin/sh
 COPY --from=0 /cloudflared /
 COPY --from=0 /etc/ssl/certs /etc/ssl/certs
 
