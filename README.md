@@ -9,7 +9,7 @@ Create free tunnel using Docker and TryCloudflare
 ## Usage
 
 ```docker
-docker run -d --link service --name doc -e ADDR=http://service:19282 mikubill/docker-cloudflare-tunnel
+docker run -d --link service --name doc -e ADDR=http://service:19282 mikubill/cloudflare-tunnel
 ```
 
 然后`docker logs doc`查看地址即可。
